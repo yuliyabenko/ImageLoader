@@ -15,7 +15,7 @@ public class ImageLoader {
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < arrayUrl.length; i++) {
-            new Thread(new Image(i)).start();
+            new Thread(new ImageThreadReleaser(i)).start();
             Thread.sleep(2000);
         }
     }
@@ -73,10 +73,10 @@ public class ImageLoader {
         }
     }
 
-    public static class Image implements Runnable {
+    public static class ImageThreadReleaser implements Runnable {
         private int imageNumber;
 
-        public Image(int imageNumber) {
+        public ImageThreadReleaser(int imageNumber) {
             this.imageNumber = imageNumber;
         }
 
